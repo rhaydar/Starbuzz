@@ -11,6 +11,7 @@ import android.widget.Toast;
 
 public class DrinkActivity extends Activity {
     public static final String EXTRA_DRINKID = "drinkId";
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -49,7 +50,7 @@ public class DrinkActivity extends Activity {
             cursor.close();
             db.close();
         } catch (SQLiteException e) {
-            Toast toast = Toast.makeText(this, "Database unavailble",
+            Toast toast = Toast.makeText(this, "Database unavailable",
                     Toast.LENGTH_SHORT);
             toast.show();
         }
