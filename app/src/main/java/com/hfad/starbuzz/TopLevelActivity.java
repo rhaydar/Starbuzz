@@ -8,6 +8,7 @@ import android.database.sqlite.SQLiteException;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.AdapterView;
+import android.widget.CursorAdapter;
 import android.widget.ListView;
 import android.widget.SimpleCursorAdapter;
 import android.widget.Toast;
@@ -72,6 +73,19 @@ public class TopLevelActivity extends Activity {
                     }
                 };
         listFavorites.setOnItemClickListener(itemClickListener);
+    }
+
+    @Override
+    public void onRestart() {
+        super.onRestart();
+        Cursor newCursor = db.query("DRINK",
+                new String[] {"_id", "NAME"},
+                "FAVORITE = 1",
+                null, null, null, null);
+        ListView listFavorites = findViewById(R.id.list_favorites);
+        CursorAdapter adapter = (CursorAdapter)listFavorites.getAdapter();
+        adapter.changeCursor(newCursor);
+        favoritesCursor = newCursor;
     }
 
     @Override
