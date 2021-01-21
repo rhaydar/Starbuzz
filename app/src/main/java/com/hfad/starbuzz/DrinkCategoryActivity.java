@@ -49,7 +49,6 @@ public class DrinkCategoryActivity extends AppCompatActivity {
                         Intent intent = new Intent(DrinkCategoryActivity.this, DrinkActivity.class);
                         intent.putExtra(DrinkActivity.EXTRA_DRINKID, (int)id);
                         startActivity(intent);
-
                     }
                 };
         listDrinks.setOnItemClickListener(itemClickListener);
